@@ -26,6 +26,11 @@ namespace AdvertApi
             services.AddTransient<StorageHealthCheck>();
             services.AddControllers();
             services.AddHealthChecks().AddCheck<StorageHealthCheck>("Storage");
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllOrigin", policy=> policy.WithOrigins("*").AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,7 +41,7 @@ namespace AdvertApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 

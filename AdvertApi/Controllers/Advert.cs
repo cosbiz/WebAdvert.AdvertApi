@@ -111,5 +111,14 @@ namespace AdvertApi.Controllers
                 return new StatusCodeResult(500);
             }
         }
+
+        [HttpGet]
+        [Route("all")]
+        [ProducesResponseType(200)]
+        // [EnableCors("AllOrigin")]
+        public async Task<IActionResult> All()
+        {
+            return new JsonResult(await _advertStorageService.GetAllAsync());
+        }
     }
 }

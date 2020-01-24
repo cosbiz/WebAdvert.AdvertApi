@@ -115,7 +115,7 @@ namespace AdvertApi.Controllers
         [HttpGet]
         [Route("all")]
         [ProducesResponseType(200)]
-        // [EnableCors("AllOrigin")]
+        [EnableCors("AllOrigin")]
         public async Task<IActionResult> All()
         {
             return new JsonResult(await _advertStorageService.GetAllAsync());
